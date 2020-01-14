@@ -1,6 +1,8 @@
 package models;
 
-import java.time.LocalDateTime;
+import java.sql.Connection;
+import java.util.Objects;
+
 
 public class Animals {
     private int animals_id;
@@ -11,7 +13,6 @@ public class Animals {
     public Animals(int id, String name) {
         this.animals_id = animals_id;
         this.animals_name = animals_name;
-        this.id = 0;
     }
 
     public static  Animals setupNewAnimals() {
@@ -48,6 +49,24 @@ public class Animals {
         this.animals_age = animals_age;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Animals)) return false;
+        Animals animals = (Animals) o;
+        return getAnimals_id() == animals.getAnimals_id() &&
+                getAnimals_age() == animals.getAnimals_age() &&
+                getAnimals_name().equals(animals.getAnimals_name()) &&
+                getAnimals_health().equals(animals.getAnimals_health());
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(getAnimals_id(), getAnimals_name(),getAnimals_health(), getAnimals_age());
+    }
 
+    @Override
+    public void saveAnimals(Animals animals) {
+        try (Connection conn =)
+    }
 }
 

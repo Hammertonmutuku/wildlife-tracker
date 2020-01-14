@@ -21,6 +21,6 @@ CREATE TABLE IF NOT EXISTS  sightings(
    animals_location VARCHAR,
    ranger_name VARCHAR,
    created_at TIMESTAMP
-);
+); ()
 
 
