@@ -1,11 +1,6 @@
 package models;
 
-import interfaces.AnimalsInterface;
-import org.sql2o.Connection;
-
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Objects;
 
 public class Animals {
     private int id;
@@ -31,5 +26,29 @@ public class Animals {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getHealth() {
+        return health;
+    }
+    public void setHealth(String health) {
+        this.health = health;
+    }
+
+    public String getAge() {
+        return age;
+    }
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+
 }
 
