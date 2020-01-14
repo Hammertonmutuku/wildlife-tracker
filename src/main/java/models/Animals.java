@@ -66,7 +66,9 @@ public class Animals {
 
     @Override
     public void saveAnimals(Animals animals) {
-        try (Connection conn =)
+        try (Connection conn = Database.sql2o.open()) {
+
+        }
     }
 }
 
