@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Objects;
+
 public class EndangeredAnimals {
     private int animals_id;
     private String animals_name;
@@ -46,6 +48,22 @@ public class EndangeredAnimals {
 
     public void setId(int id) {
         this.id = id;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EndangeredAnimals)) return false;
+        EndangeredAnimals that = (EndangeredAnimals) o;
+        return getAnimals_id() == that.getAnimals_id() &&
+                getId() == that.getId() &&
+                getAnimals_name().equals(that.getAnimals_name()) &&
+                getAnimals_health().equals(that.getAnimals_health()) &&
+                getAnimals_age().equals(that.getAnimals_age());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getAnimals_id(), getAnimals_name(), getAnimals_health(), getAnimals_age(), getId());
     }
 
 }
