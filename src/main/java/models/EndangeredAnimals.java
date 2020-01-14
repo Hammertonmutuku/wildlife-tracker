@@ -1,8 +1,10 @@
 package models;
 
+import interfaces.AnimalsInterface;
+import org.sql2o.Connection;
+
 import java.util.List;
 import java.util.Objects;
-import org.sql2o.Connection;
 
 public class EndangeredAnimals {
     private int animals_id;
@@ -11,10 +13,10 @@ public class EndangeredAnimals {
     private int animals_age;
     private int id;
 
-    public EndangeredAnimals(String animal_name,String animal_health, String animal_age ){
-        this.animals_name = animal_name;
-        this.animals_health = animal_health;
-        this.animals_age = animal_age;
+    public EndangeredAnimals(String animals_name,String animals_health, int animals_age ){
+        this.animals_name = animals_name;
+        this.animals_health = animals_health;
+        this.animals_age = animals_age;
         this.id = 1;
     }
     public int getAnimals_id() {
@@ -86,5 +88,16 @@ public class EndangeredAnimals {
                     .throwOnMappingFailure(false)
                     .executeAndFetch(EndangeredAnimals.class);
         }
+        public EndangeredAnimals findById(int id){
+            String sql = "SELECT * FROM endangered_animals WHERE id=:id";
+            try (Connection conn = Database.sql2o.open()){
+                EndangeredAnimals animals = conn.createQuery(sql)
+                        .addParameter("id",id)
+                        .executeAndFetchFirst(EndangeredAnimals.class);
+                return animals;
+            }catch (IndexOutOfBoundsException ex){
+                System.out.println(ex);
+                return null;
+            }
     }
 }
