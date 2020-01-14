@@ -1,19 +1,23 @@
 package models;
 
+import interfaces.AnimalsInterface;
+import org.sql2o.Connection;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class Animals {
-    private String name;
-    private boolean endangered;
-    private LocalDateTime createdAt;
     private int id;
+    private String name;
+    private String health;
+    private String age;
+    private LocalDateTime createdAt;
 
-    public Animals(String description) {
-        this.endangered  = false;
+    public Animals(String name, int id) {
+        this.id = id;
         this.name = name;
-        this.createdAt =LocalDateTime.now();
+        this.id = 0;
     }
 
 
