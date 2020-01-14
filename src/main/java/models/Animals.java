@@ -1,6 +1,7 @@
 package models;
 
-import java.sql.Connection;
+import org.sql2o.Connection;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -64,11 +65,14 @@ public class Animals {
         return Objects.hash(getAnimals_id(), getAnimals_name(),getAnimals_health(), getAnimals_age());
     }
 
-    @Override
-    public void saveAnimals(Animals animals) {
+    public static List<Animals> getAllAnimals() {
         try (Connection conn = Database.sql2o.open()) {
-
+            String sql = "SELECT * FROM animals ORDER BY id DESC;";
+            return conn.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Animals.class);
         }
+      }
     }
-}
+
 
