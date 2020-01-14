@@ -6,7 +6,7 @@ public class EndangeredAnimals {
     private int animals_id;
     private String animals_name;
     private String animals_health;
-    private String animals_age;
+    private int animals_age;
     private int id;
 
     public EndangeredAnimals(String animal_name,String animal_health, String animal_age ){
@@ -34,11 +34,11 @@ public class EndangeredAnimals {
     public String getAnimals_health() {
         return animals_health;
     }
-    public String getAnimals_age() {
+    public int getAnimals_age() {
         return animals_age;
     }
 
-    public void setAnimals_age(String animals_age) {
+    public void setAnimals_age(int animals_age) {
         this.animals_age = animals_age;
     }
 
@@ -56,9 +56,9 @@ public class EndangeredAnimals {
         EndangeredAnimals that = (EndangeredAnimals) o;
         return getAnimals_id() == that.getAnimals_id() &&
                 getId() == that.getId() &&
+                getAnimals_age() == that.getAnimals_age() &&
                 getAnimals_name().equals(that.getAnimals_name()) &&
-                getAnimals_health().equals(that.getAnimals_health()) &&
-                getAnimals_age().equals(that.getAnimals_age());
+                getAnimals_health().equals(that.getAnimals_health());
     }
 
     @Override
