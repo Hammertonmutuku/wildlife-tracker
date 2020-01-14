@@ -1,6 +1,8 @@
 package models;
 
+import java.util.List;
 import java.util.Objects;
+import org.sql2o.Connection;
 
 public class EndangeredAnimals {
     private int animals_id;
@@ -65,5 +67,24 @@ public class EndangeredAnimals {
     public int hashCode() {
         return Objects.hash(getAnimals_id(), getAnimals_name(), getAnimals_health(), getAnimals_age(), getId());
     }
+    public void saveAnimals(EndangeredAnimals endangeredAnimals) {
+        try (Connection conn = Database.sql2o.open()) {
+            String sql = "INSERT INTO  endangered_animals(animal_name, animal_age, animal_health ) VALUES (:animal_name, :animal_age,:animal_health);";
+            this.id = (int) conn.createQuery(sql, true)
+                    .addParameter("animal_name", this.animals_name)
+                    .addParameter("animal_age", this.animals_age)
+                    .addParameter("animal_health", this.animals_health)
+                    .executeUpdate()
+                    .getKey();
+        }
+    }
 
+    public static List<EndangeredAnimals> getAllAnimals() {
+        try(Connection conn = Database.sql2o.open()){
+            String sql = "SELECT * FROM endangered_animals ORDER BY id DESC;";
+            return conn.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(EndangeredAnimals.class);
+        }
+    }
 }
