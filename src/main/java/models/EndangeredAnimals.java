@@ -32,5 +32,20 @@ public class EndangeredAnimals {
     public String getAnimal_health() {
         return animal_health;
     }
+    public String getAnimal_age() {
+        return animal_age;
+    }
+
+    public void setAnimal_age(String animal_age) {
+        this.animal_age = animal_age;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
 }
